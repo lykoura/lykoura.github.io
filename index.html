@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body background="/image.jpg">
+    <div class="container">
+        <div class="frmRis">
+            <h1>Student Registration</h1>
+            <hr>
+            <br>
+            <div class="line1">
+                <div class="userName">
+                    <label for="userName">Username</label>
+                    <br>
+                    <input type="text" placeholder="Username" id="userName">
+                </div>
+                <div class="dob">
+                    <label for="dob">Date Of Brith?</label>
+                    <br>
+                    <input type="date" id="dob">
+                </div>
+                <div class="gender">
+                    <label for="gender">Gender?</label>
+                    
+                        <select name="gender" id="gender" style="outline: none; color: white; display: flex; align-items: center; justify-content: space-between; width: 150px; height: 20px; border-radius: 5px; background-color: #657a97; padding: 20px; font-size: 14px; margin-bottom: 10px; margin-top: 5px;">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          </select>
+                </div>
+                <div class="email">
+                    <label for="email">Email</label>
+                    <br>
+                    <input type="email" name="" id="email" placeholder="Email">
+                </div>
+            </div>
+            <div class="line2">
+                <div class="address">
+                    <label for="address">Address</label>
+                    <br>
+                    <input type="text" name="" id="address" placeholder="Address">
+                </div>
+                <div class="phNum">
+                    <label for="phNum">Phone Number</label>
+                    <br>
+                    <input type="text" name="" id="phNum" placeholder="Phone Number">
+                </div>
+                <div class="major">
+                    <label for="major">Major</label>
+                    <br>
+                    <input type="text" name="" id="major" placeholder="Major">
+                </div>
+                <div style="width: 150px;"></div>
+            </div>
+            <div class="line3">
+                <br>
+                <button class="button1" onclick="addData()">Add</button>
+                <button class="button2">Clear</button>
+            </div>
+            
+            
+            
+        </div>
+        <div class="listUser">
+            <table id="myTable">
+                <tr>
+                    <th>Username</th>
+                    <th>Date Of Birth</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone Number</th>
+                    <th>Major</th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        
+        //globle Varialble
+        let username = document.getElementById("userName");
+        let dob = document.getElementById("dob");
+        let gender = document.getElementById("gender");
+        let email = document.getElementById("email");
+        let address = document.getElementById("address");
+        let phNum = document.getElementById("phNum");
+        let major = document.getElementById("major");
+        let button = document.querySelector("button");
+        let _row = null;
+        //function Add Data
+        function addData(){
+            if(username.value==""||dob.value==""||gender.value==""||email.value==""||address.value==""||phNum.value==""||major.value==""){
+                alert("Please enter the information.");
+            }
+            else{
+                if(button.innerHTML=="Add"){
+                let row = myTable.insertRow();
+                let col1 = row.insertCell();
+                col1.innerHTML  = userName.value;
+                let col2 = row.insertCell();
+                col2.innerHTML  = dob.value;
+                let col3 = row.insertCell();
+                col3.innerHTML  = gender.value;
+                let col4 = row.insertCell();
+                col4.innerHTML  = email.value;
+                let col5 = row.insertCell();
+                col5.innerHTML  = address.value;
+                let col6 = row.insertCell();
+                col6.innerHTML  = phNum.value;
+                let col7 = row.insertCell();
+                col7.innerHTML  = major.value;
+                let col8 = row.insertCell();
+                col8.innerHTML  = "<span onclick='Update(this)'>Update</span> | <span onclick='Delete(this)'>Delete</span>";
+                
+            }
+            else{
+                _row.cells[0].innerHTML = userName.value;
+                _row.cells[1].innerHTML = dob.value;
+                _row.cells[2].innerHTML = gender.value;
+                _row.cells[3].innerHTML = email.value;
+                _row.cells[4].innerHTML = address.value;
+                _row.cells[5].innerHTML = phNum.value;
+                _row.cells[6].innerHTML = major.value;
+                button.innerHTML ="Add"
+            }
+
+            //clear
+            clearAllText();
+            }
+            
+        }
+        function clearAllText() {
+            userName.value= null;
+            dob.value =null;
+            gender.value =null;
+            email.value =null;
+            address.value =null;
+            phNum.value =null;
+            major.value =null;
+            userName.focus();
+        }
+        document.body.addEventListener("keypress",(e)=>{
+            if(e.key=="Enter"){
+                addData();
+            }
+        });
+        function Delete(params) {            
+            _row = params.parentElement.parentElement; 
+            if(confirm("Are you want to delete?")){
+                _row.remove();
+            }
+            
+        }
+        
+        //Update Recode
+        function Update(params){
+            _row = params.parentElement.parentElement;
+            userName.value = _row.cells[0].innerHTML; 
+            dob.value = _row.cells[1].innerHTML;
+            gender.value = _row.cells[2].innerHTML;
+            email.value = _row.cells[3].innerHTML;
+            address.value = _row.cells[4].innerHTML;
+            phNum.value = _row.cells[5].innerHTML;
+            major.value = _row.cells[6].innerHTML;
+            button.innerHTML = "Update";
+        }
+        
+
+    </script>
+</body>
+</html>
