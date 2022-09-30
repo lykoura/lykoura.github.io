@@ -16,7 +16,7 @@ span{
 
 .frmRis{
     
-    width: 680px;
+    width: 800px;
     height: 280px;
     background-color: #2b4f71;
     margin: auto;
@@ -30,7 +30,7 @@ span{
     
 }
 .listUser{
-    width: 680px;
+    width: 800px;
     height: 500px;
     margin: auto;
     margin-top: 20px;
@@ -113,9 +113,9 @@ span{
     font-family: arial;
     font-size: 13px;
     position: absolute;
-    width: 65%;
-    left: 18%;
-    top: 50%;
+    width: 800px;
+    /* left: 18%;
+    top: 50%; */
     /* transform: translate(-50%,-50%); */
     background-color: #ffffff;
     color: white;
